@@ -27,7 +27,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # 设置中文字体路径
 try:
-    custom_font_path = "C:/Windows/Fonts/simsun.ttc"  # 替换为实际的字体路径
+    custom_font_path = "C:/Windows/Fonts/simsun.ttc"
     custom_font = font_manager.FontProperties(fname=custom_font_path)
     plt.rcParams['font.sans-serif'] = custom_font_path
     plt.rcParams['axes.unicode_minus'] = False  # 解决负号显示问题
@@ -63,7 +63,7 @@ if url:
     cleaned_text = re.sub(r'<.*?>', '', text)
     cleaned_text = re.sub(r'[^\w]', '', cleaned_text)
     words = jieba.cut(text)
-    word_list = [word for word in words if len(word) > 1]  # 去除单个字符
+    word_list = [word for word in words if len(word) > 1 and not word.isdigit()]  # 去除单个字符
     word_freq = Counter(word_list)  # 统计词频
 
     # 提取前20个高频词
